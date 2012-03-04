@@ -16,6 +16,17 @@
 
 package com.android.demo.notepad1;
 
+// practice working on a branch and then pushing it, then merging it in to master
+// create a branch
+// make some changes
+// merge to master
+
+// then do the same but push branch to the remote
+
+// practice making a change and pushing and merging if in another repo
+
+
+
 import android.R;
 import android.app.ListActivity;
 import android.os.Bundle;
