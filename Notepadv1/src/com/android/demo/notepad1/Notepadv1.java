@@ -16,11 +16,13 @@
 
 package com.android.demo.notepad1;
 
-import android.R;
+//import com.android.demo.notepad1.R;
 import android.app.ListActivity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SimpleCursorAdapter;
 
 public class Notepadv1 extends ListActivity {
     private int mNoteNumber = 1;
@@ -39,7 +41,6 @@ public class Notepadv1 extends ListActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO Auto-generated method stub
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, INSERT_ID, 0, R.string.menu_insert);
         return result;
@@ -65,9 +66,12 @@ public class Notepadv1 extends ListActivity {
     	// Get all of the notes fro mthe database and create
     	Cursor c = mDbHelper.fetchAllNotes();
     	startManagingCursor(c);
-    	String[] from new String[] {NotesDbAdapter.KEY_TITLE};
+    	String[] from= new String[] {NotesDbAdapter.KEY_TITLE};
     	int[] to = new int[] {R.id.text1};
     	
+    	// Now create an array adapter and set it to display using our row
+    	SimpleCursorAdapter notes = new SimpleCursorAdapter(this, R.layout.notepad_list, c, from, to);
+    	setListAdapter(notes);
     	
     }
     
